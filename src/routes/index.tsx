@@ -191,7 +191,7 @@ function Typewriter() {
   const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
-    const word = WORDS[i % WORDS.length];
+    const word = WORDS[i % WORDS.length] ?? "";
     const done = !deleting && text === word;
     const empty = deleting && text === "";
     const delay = done ? 1400 : empty ? 200 : deleting ? 40 : 80;
