@@ -249,10 +249,10 @@ function Hero() {
           <span className="size-2 rounded-full bg-primary shadow-[var(--shadow-glow)]" />
           available for freelance work
         </p>
-        <h1 className="reveal-words mt-6 text-[2.1rem] leading-[1.08] font-bold tracking-tight sm:text-6xl lg:text-7xl">
+        <h1 className="reveal-words hero-heading mt-6 text-[2.1rem] leading-[1.08] font-bold tracking-tight sm:text-6xl lg:text-7xl">
           <Words text="Hi, I'm" />{" "}
           <span className="text-gradient">
-            <Words text="Mahboob Ali" />
+            <Words text="Mahboob Ali" offset={2} />
           </span>
         </h1>
         <p className="mt-4 text-lg font-medium sm:text-3xl">
@@ -284,13 +284,14 @@ function Hero() {
   );
 }
 
-function Words({ text }: { text: string }) {
+function Words({ text, offset = 0 }: { text: string; offset?: number }) {
+  const words = text.split(" ");
   return (
     <>
-      {text.split(" ").map((w, i) => (
-        <span key={`${w}-${i}`} className="word" style={{ "--i": i } as CSSProperties}>
+      {words.map((w, i) => (
+        <span key={`${w}-${i}`} className="word" style={{ "--i": i + offset } as CSSProperties}>
           {w}
-          {i < text.split(" ").length - 1 ? "\u00A0" : ""}
+          {i < words.length - 1 ? "\u00A0" : ""}
         </span>
       ))}
     </>

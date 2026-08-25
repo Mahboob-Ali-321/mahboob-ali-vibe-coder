@@ -140,6 +140,19 @@
   transform: none;
 }
 
+/* Hero heading: shorter, smoother name reveal so the whole line feels cohesive */
+.hero-heading.reveal-words .word {
+  transform: translateY(16px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+  transition-delay: calc(var(--i) * 55ms);
+}
+
+.hero-heading.reveal-words.is-visible .word {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 @media (prefers-reduced-motion: reduce) {
   .reveal,
   .reveal-words .word {
