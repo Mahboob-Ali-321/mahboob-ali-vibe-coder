@@ -281,12 +281,12 @@ function Hero() {
   );
 }
 
-function Words({ text, offset = 0 }: { text: string; offset?: number }) {
+function Words({ text }: { text: string }) {
   const words = text.split(" ");
   return (
     <>
       {words.map((w, i) => (
-        <span key={`${w}-${i}`} className="word" style={{ "--i": i + offset } as CSSProperties}>
+        <span key={`${w}-${i}`} className="word" style={{ "--i": i } as CSSProperties}>
           {w}
           {i < words.length - 1 ? "\u00A0" : ""}
         </span>
