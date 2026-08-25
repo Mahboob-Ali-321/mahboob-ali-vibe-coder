@@ -144,7 +144,7 @@ function Navbar() {
           <span className="text-gradient font-semibold">mahboob</span>
           <span className="text-muted-foreground">.dev</span>
         </a>
-        <div className="hidden items-center gap-8 md:flex">
+        <div className="hidden items-center gap-6 md:flex">
           {NAV.map((n) => (
             <a
               key={n.href}
@@ -154,6 +154,14 @@ function Navbar() {
               {n.label}
             </a>
           ))}
+          <a
+            href={resumeAsset.url}
+            target="_blank"
+            rel="noreferrer"
+            className="rounded-full border border-border px-4 py-2 text-sm font-medium text-muted-foreground transition-all duration-200 hover:scale-105 hover:border-primary/60 hover:text-foreground"
+          >
+            Download Resume
+          </a>
           <a
             href={resumeAsset.url}
             target="_blank"
@@ -183,6 +191,15 @@ function Navbar() {
               {n.label}
             </a>
           ))}
+          <a
+            href={resumeAsset.url}
+            target="_blank"
+            rel="noreferrer"
+            onClick={() => setOpen(false)}
+            className="rounded-xl px-3 py-2 text-sm text-muted-foreground hover:bg-secondary hover:text-foreground"
+          >
+            Download Resume
+          </a>
         </div>
       )}
     </header>
@@ -272,14 +289,6 @@ function Hero() {
             className="rounded-full border border-border px-6 py-3.5 text-sm font-semibold transition-all duration-300 hover:scale-105 hover:border-primary/60 hover:shadow-[var(--shadow-glow)] sm:py-3"
           >
             Let&apos;s Talk
-          </a>
-          <a
-            href={resumeAsset.url}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3.5 text-sm font-semibold transition-all duration-300 hover:scale-105 hover:border-primary/60 hover:shadow-[var(--shadow-glow)] sm:py-3"
-          >
-            Download Resume
           </a>
           <div className="mt-2 w-full sm:mt-0 sm:ml-2 sm:w-auto">
             <Socials />
