@@ -124,6 +124,16 @@
   }
 }
 
+/* metric-matched fallback so text doesn't reflow when Space Grotesk loads */
+@font-face {
+  font-family: "Space Grotesk Fallback";
+  src: local("Arial");
+  size-adjust: 97%;
+  ascent-override: 96%;
+  descent-override: 24%;
+  line-gap-override: 0%;
+}
+
 /* word-by-word headline reveal */
 .reveal-words .word {
   display: inline-block;
