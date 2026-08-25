@@ -273,6 +273,14 @@ function Hero() {
           >
             Let&apos;s Talk
           </a>
+          <a
+            href={resumeAsset.url}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3.5 text-sm font-semibold transition-all duration-300 hover:scale-105 hover:border-primary/60 hover:shadow-[var(--shadow-glow)] sm:py-3"
+          >
+            Download Resume
+          </a>
           <div className="mt-2 w-full sm:mt-0 sm:ml-2 sm:w-auto">
             <Socials />
           </div>
