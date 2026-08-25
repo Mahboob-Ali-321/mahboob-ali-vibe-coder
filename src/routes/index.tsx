@@ -526,6 +526,7 @@ function Footer() {
 
 function Index() {
   useReveal();
+  useCursorGlow();
   return (
     <div className="min-h-screen">
       <Navbar />
