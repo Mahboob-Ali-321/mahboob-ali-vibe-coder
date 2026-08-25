@@ -59,6 +59,9 @@ export const Route = createFileRoute("/")({
   }),
 });
 
+// Get a free access key at https://web3forms.com (enter khanmehbub515@gmail.com, check inbox) and paste it here.
+const WEB3FORMS_ACCESS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY";
+
 const GITHUB = "https://github.com/Mahboob-Ali-321";
 const INSTAGRAM = "https://www.instagram.com/cyb3r.aliiii__";
 const WHATSAPP =
@@ -313,7 +316,7 @@ function About() {
     { icon: Sparkles, value: "React & Python", label: "Core Stack" },
   ];
   return (
-    <section id="about" className="mx-auto max-w-6xl px-5 py-24">
+    <section id="about" className="mx-auto max-w-6xl px-5 py-16 sm:py-24">
       <SectionTitle kicker="about" title="Builder first, everything else second." />
       <div className="mt-8 grid gap-10 lg:grid-cols-[1.3fr_1fr]">
         <div className="reveal space-y-5 text-muted-foreground [transition-delay:80ms]">
@@ -351,7 +354,7 @@ function About() {
 
 function Skills() {
   return (
-    <section id="skills" className="mx-auto max-w-6xl px-5 py-24">
+    <section id="skills" className="mx-auto max-w-6xl px-5 py-16 sm:py-24">
       <SectionTitle kicker="stack" title="Tools I reach for daily." />
       <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
         {SKILLS.map((s, idx) => (
@@ -374,7 +377,7 @@ function Skills() {
 
 function Projects() {
   return (
-    <section id="projects" className="mx-auto max-w-6xl px-5 py-24">
+    <section id="projects" className="mx-auto max-w-6xl px-5 py-16 sm:py-24">
       <SectionTitle kicker="selected work" title="Things I've built and shipped." />
       <div className="mt-10 grid gap-8 lg:grid-cols-2">
         {PROJECTS.map((p, idx) => (
@@ -500,7 +503,7 @@ function Contact() {
     "w-full rounded-xl border border-input bg-secondary/40 px-4 py-3 text-base outline-none transition-all duration-200 placeholder:text-muted-foreground focus:border-primary/70 focus:shadow-[var(--shadow-glow)] sm:text-sm";
 
   return (
-    <section id="contact" className="mx-auto max-w-6xl px-5 py-24">
+    <section id="contact" className="mx-auto max-w-6xl px-5 py-16 sm:py-24">
       <SectionTitle kicker="contact" title="Let's build something together" />
       <div className="mt-10 grid gap-8 lg:grid-cols-2">
         <div className="reveal space-y-6">
