@@ -294,7 +294,6 @@ function Hero() {
             <Socials />
           </div>
         </div>
-        </div>
       </div>
     </section>
   );
