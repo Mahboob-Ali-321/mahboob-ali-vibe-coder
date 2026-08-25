@@ -435,14 +435,38 @@ function GithubCta() {
 }
 
 function Contact() {
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const [sending, setSending] = useState(false);
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast.success("Thanks! Message noted — WhatsApp gets the fastest reply.");
-    e.currentTarget.reset();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    data.append("access_key", WEB3FORMS_ACCESS_KEY);
+    data.append("subject", "New message from your portfolio site");
+    data.append("from_name", "mahboob.dev portfolio");
+
+    setSending(true);
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: data,
+      });
+      const json = (await res.json()) as { success?: boolean; message?: string };
+      if (json.success) {
+        toast.success("Message sent! I'll get back to you shortly.");
+        form.reset();
+      } else {
+        toast.error(json.message || "Couldn't send that — try WhatsApp instead.");
+      }
+    } catch {
+      toast.error("Network error — please try WhatsApp instead.");
+    } finally {
+      setSending(false);
+    }
   };
 
   const field =
-    "w-full rounded-xl border border-input bg-secondary/40 px-4 py-3 text-sm outline-none transition-all duration-200 placeholder:text-muted-foreground focus:border-primary/70 focus:shadow-[var(--shadow-glow)]";
+    "w-full rounded-xl border border-input bg-secondary/40 px-4 py-3 text-base outline-none transition-all duration-200 placeholder:text-muted-foreground focus:border-primary/70 focus:shadow-[var(--shadow-glow)] sm:text-sm";
 
   return (
     <section id="contact" className="mx-auto max-w-6xl px-5 py-24">
