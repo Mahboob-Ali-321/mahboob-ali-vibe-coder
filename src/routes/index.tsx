@@ -218,46 +218,62 @@ function Typewriter() {
 }
 
 function Hero() {
+  const y = useParallax(0.18);
   return (
-    <section id="top" className="relative overflow-hidden pt-36 pb-24 sm:pt-44 sm:pb-32">
-      <div className="grid-bg pointer-events-none absolute inset-0" aria-hidden />
+    <section
+      id="top"
+      className="relative overflow-hidden pt-32 pb-20 sm:pt-44 sm:pb-32"
+    >
       <div
-        className="animate-blob pointer-events-none absolute -top-24 -left-24 size-[28rem] rounded-full bg-[var(--cyan)] opacity-20 blur-[100px]"
+        className="grid-bg pointer-events-none absolute inset-0"
+        style={{ transform: `translate3d(0, ${y * 0.4}px, 0)` }}
         aria-hidden
       />
       <div
-        className="animate-blob pointer-events-none absolute -right-32 top-24 size-[32rem] rounded-full bg-[var(--violet)] opacity-25 blur-[110px] [animation-delay:-6s]"
+        className="animate-blob pointer-events-none absolute -top-24 -left-24 size-[20rem] rounded-full bg-[var(--cyan)] opacity-20 blur-[100px] sm:size-[28rem]"
+        style={{ translate: `0 ${y * 0.6}px` }}
         aria-hidden
       />
-      <div className="relative mx-auto max-w-6xl px-5">
-        <p className="glass inline-flex items-center gap-2 rounded-full px-3 py-1 font-mono text-xs text-muted-foreground">
+      <div
+        className="animate-blob pointer-events-none absolute -right-32 top-24 size-[22rem] rounded-full bg-[var(--violet)] opacity-25 blur-[110px] [animation-delay:-6s] sm:size-[32rem]"
+        style={{ translate: `0 ${y * -0.35}px` }}
+        aria-hidden
+      />
+      <div
+        className="relative mx-auto max-w-6xl px-5"
+        style={{ transform: `translate3d(0, ${y * 0.12}px, 0)` }}
+      >
+        <p className="glass inline-flex items-center gap-2 rounded-full px-3 py-1 font-mono text-[11px] text-muted-foreground sm:text-xs">
           <span className="size-2 rounded-full bg-primary shadow-[var(--shadow-glow)]" />
           available for freelance work
         </p>
-        <h1 className="mt-6 text-4xl leading-[1.05] font-bold tracking-tight sm:text-6xl lg:text-7xl">
-          Hi, I&apos;m <span className="text-gradient">Mahboob Ali</span>
+        <h1 className="reveal-words mt-6 text-[2.1rem] leading-[1.08] font-bold tracking-tight sm:text-6xl lg:text-7xl">
+          <Words text="Hi, I'm" />{" "}
+          <span className="text-gradient">
+            <Words text="Mahboob Ali" />
+          </span>
         </h1>
-        <p className="mt-4 text-xl font-medium sm:text-3xl">
+        <p className="mt-4 text-lg font-medium sm:text-3xl">
           <Typewriter />
         </p>
         <p className="mt-6 max-w-2xl text-base text-muted-foreground sm:text-lg">
           I build clean, functional websites and web apps — from AI tools to business sites — with
           React, Python, and a sharp eye for design.
         </p>
-        <div className="mt-9 flex flex-wrap items-center gap-4">
+        <div className="mt-9 flex flex-wrap items-center gap-3 sm:gap-4">
           <a
             href="#projects"
-            className="bg-brand rounded-full px-6 py-3 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-[var(--shadow-glow)]"
+            className="bg-brand rounded-full px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-[var(--shadow-glow)] sm:py-3"
           >
             View My Work
           </a>
           <a
             href="#contact"
-            className="rounded-full border border-border px-6 py-3 text-sm font-semibold transition-all duration-300 hover:scale-105 hover:border-primary/60 hover:shadow-[var(--shadow-glow)]"
+            className="rounded-full border border-border px-6 py-3.5 text-sm font-semibold transition-all duration-300 hover:scale-105 hover:border-primary/60 hover:shadow-[var(--shadow-glow)] sm:py-3"
           >
             Let&apos;s Talk
           </a>
-          <div className="ml-auto sm:ml-2">
+          <div className="mt-2 w-full sm:mt-0 sm:ml-2 sm:w-auto">
             <Socials />
           </div>
         </div>
