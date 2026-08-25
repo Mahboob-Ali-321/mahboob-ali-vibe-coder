@@ -506,15 +506,41 @@ function Contact() {
             </a>
           </div>
         </div>
-        <form onSubmit={onSubmit} className="reveal glass space-y-4 rounded-3xl p-6 [transition-delay:120ms]">
-          <input required name="name" placeholder="Your name" className={field} />
-          <input required name="contact" placeholder="Email or phone" className={field} />
-          <textarea required name="message" rows={5} placeholder="What are we building?" className={field} />
+        <form
+          onSubmit={onSubmit}
+          className="reveal glass space-y-4 rounded-3xl p-5 [transition-delay:120ms] sm:p-6"
+        >
+          <input
+            type="text"
+            name="botcheck"
+            tabIndex={-1}
+            autoComplete="off"
+            className="hidden"
+            aria-hidden="true"
+          />
+          <input required name="name" maxLength={100} placeholder="Your name" className={field} />
+          <input
+            required
+            name="contact"
+            maxLength={150}
+            placeholder="Email or phone"
+            className={field}
+          />
+          <textarea
+            required
+            name="message"
+            rows={5}
+            maxLength={2000}
+            placeholder="What are we building?"
+            className={field}
+          />
           <button
             type="submit"
-            className="w-full rounded-xl border border-border py-3 text-sm font-semibold transition-all duration-300 hover:border-primary/70 hover:shadow-[var(--shadow-glow)]"
+            disabled={sending}
+            className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border py-3.5 text-sm font-semibold transition-all duration-300 hover:scale-[1.02] hover:border-primary/70 hover:shadow-[var(--shadow-glow)] disabled:pointer-events-none disabled:opacity-60"
           >
-            Send message
+            {sending && <Loader2 size={16} className="animate-spin" />}
+            {sending ? "Sending…" : "Send message"}
           </button>
         </form>
       </div>
