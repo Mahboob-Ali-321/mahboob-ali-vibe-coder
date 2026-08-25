@@ -17,6 +17,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { useReveal, useParallax, useCursorGlow, WORDS } from "@/hooks/use-reveal";
 import modelpulseImg from "@/assets/modelpulse.jpg";
 import smartlookImg from "@/assets/smartlook.jpg";
+import resumeAsset from "@/assets/Mahboob_Ali_Resume.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -154,7 +155,7 @@ function Navbar() {
             </a>
           ))}
           <a
-            href={WHATSAPP}
+            href={resumeAsset.url}
             target="_blank"
             rel="noreferrer"
             className="bg-brand rounded-full px-4 py-2 text-sm font-semibold text-primary-foreground transition-transform duration-200 hover:scale-105"
@@ -271,6 +272,14 @@ function Hero() {
             className="rounded-full border border-border px-6 py-3.5 text-sm font-semibold transition-all duration-300 hover:scale-105 hover:border-primary/60 hover:shadow-[var(--shadow-glow)] sm:py-3"
           >
             Let&apos;s Talk
+          </a>
+          <a
+            href={resumeAsset.url}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 rounded-full border border-border px-6 py-3.5 text-sm font-semibold transition-all duration-300 hover:scale-105 hover:border-primary/60 hover:shadow-[var(--shadow-glow)] sm:py-3"
+          >
+            Download Resume
           </a>
           <div className="mt-2 w-full sm:mt-0 sm:ml-2 sm:w-auto">
             <Socials />
