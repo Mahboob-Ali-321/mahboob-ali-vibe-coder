@@ -270,7 +270,7 @@ function Words({ text }: { text: string }) {
   return (
     <>
       {text.split(" ").map((w, i) => (
-        <span key={`${w}-${i}`} className="word" style={{ "--i": i } as React.CSSProperties}>
+        <span key={`${w}-${i}`} className="word" style={{ "--i": i } as CSSProperties}>
           {w}
           {i < text.split(" ").length - 1 ? "\u00A0" : ""}
         </span>
