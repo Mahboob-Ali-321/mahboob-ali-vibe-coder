@@ -281,7 +281,7 @@ function Words({ text }: { text: string }) {
 
 function SectionTitle({ kicker, title }: { kicker: string; title: string }) {
   return (
-    <div className="reveal-words">
+    <div className="reveal reveal-words">
       <p className="font-mono text-xs tracking-widest text-primary uppercase">{kicker}</p>
       <h2 className="mt-3 text-2xl font-bold tracking-tight sm:text-4xl">
         <Words text={title} />
