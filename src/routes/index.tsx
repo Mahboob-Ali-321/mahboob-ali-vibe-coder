@@ -59,8 +59,7 @@ export const Route = createFileRoute("/")({
   }),
 });
 
-// Get a free access key at https://web3forms.com (enter khanmehbub515@gmail.com, check inbox) and paste it here.
-const WEB3FORMS_ACCESS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY";
+const WEB3FORMS_ACCESS_KEY = "ce2f0d90-14de-434b-ad7a-d3e475570cf7";
 
 const GITHUB = "https://github.com/Mahboob-Ali-321";
 const INSTAGRAM = "https://www.instagram.com/cyb3r.aliiii__";
