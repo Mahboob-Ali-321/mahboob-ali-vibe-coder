@@ -266,11 +266,26 @@ function Hero() {
   );
 }
 
+function Words({ text }: { text: string }) {
+  return (
+    <>
+      {text.split(" ").map((w, i) => (
+        <span key={`${w}-${i}`} className="word" style={{ "--i": i } as React.CSSProperties}>
+          {w}
+          {i < text.split(" ").length - 1 ? "\u00A0" : ""}
+        </span>
+      ))}
+    </>
+  );
+}
+
 function SectionTitle({ kicker, title }: { kicker: string; title: string }) {
   return (
-    <div className="reveal">
+    <div className="reveal-words">
       <p className="font-mono text-xs tracking-widest text-primary uppercase">{kicker}</p>
-      <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">{title}</h2>
+      <h2 className="mt-3 text-2xl font-bold tracking-tight sm:text-4xl">
+        <Words text={title} />
+      </h2>
     </div>
   );
 }
