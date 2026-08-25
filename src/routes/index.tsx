@@ -17,6 +17,7 @@ import { Toaster } from "@/components/ui/sonner";
 import { useReveal, useParallax, useCursorGlow, WORDS } from "@/hooks/use-reveal";
 import modelpulseImg from "@/assets/modelpulse.jpg";
 import smartlookImg from "@/assets/smartlook.jpg";
+import resumeAsset from "@/assets/Mahboob_Ali_Resume.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
   component: Index,
