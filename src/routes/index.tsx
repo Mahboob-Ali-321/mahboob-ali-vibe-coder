@@ -155,7 +155,7 @@ function Navbar() {
             </a>
           ))}
           <a
-            href={WHATSAPP}
+            href={resumeAsset.url}
             target="_blank"
             rel="noreferrer"
             className="bg-brand rounded-full px-4 py-2 text-sm font-semibold text-primary-foreground transition-transform duration-200 hover:scale-105"
