@@ -191,6 +191,15 @@ function Navbar() {
               {n.label}
             </a>
           ))}
+          <a
+            href={resumeAsset.url}
+            target="_blank"
+            rel="noreferrer"
+            onClick={() => setOpen(false)}
+            className="rounded-xl px-3 py-2 text-sm text-muted-foreground hover:bg-secondary hover:text-foreground"
+          >
+            Download Resume
+          </a>
         </div>
       )}
     </header>
