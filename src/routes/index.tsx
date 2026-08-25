@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useState, type FormEvent } from "react";
+import { useEffect, useState, type CSSProperties, type FormEvent } from "react";
 import {
   Github,
   Instagram,
@@ -10,10 +10,11 @@ import {
   Sparkles,
   Menu,
   X,
+  Loader2,
 } from "lucide-react";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
-import { useReveal, WORDS } from "@/hooks/use-reveal";
+import { useReveal, useParallax, useCursorGlow, WORDS } from "@/hooks/use-reveal";
 import modelpulseImg from "@/assets/modelpulse.jpg";
 import smartlookImg from "@/assets/smartlook.jpg";
 
@@ -57,6 +58,9 @@ export const Route = createFileRoute("/")({
     ],
   }),
 });
+
+// Get a free access key at https://web3forms.com (enter khanmehbub515@gmail.com, check inbox) and paste it here.
+const WEB3FORMS_ACCESS_KEY = "YOUR_WEB3FORMS_ACCESS_KEY";
 
 const GITHUB = "https://github.com/Mahboob-Ali-321";
 const INSTAGRAM = "https://www.instagram.com/cyb3r.aliiii__";
@@ -217,46 +221,62 @@ function Typewriter() {
 }
 
 function Hero() {
+  const y = useParallax(0.18);
   return (
-    <section id="top" className="relative overflow-hidden pt-36 pb-24 sm:pt-44 sm:pb-32">
-      <div className="grid-bg pointer-events-none absolute inset-0" aria-hidden />
+    <section
+      id="top"
+      className="relative overflow-hidden pt-32 pb-20 sm:pt-44 sm:pb-32"
+    >
       <div
-        className="animate-blob pointer-events-none absolute -top-24 -left-24 size-[28rem] rounded-full bg-[var(--cyan)] opacity-20 blur-[100px]"
+        className="grid-bg pointer-events-none absolute inset-0"
+        style={{ transform: `translate3d(0, ${y * 0.4}px, 0)` }}
         aria-hidden
       />
       <div
-        className="animate-blob pointer-events-none absolute -right-32 top-24 size-[32rem] rounded-full bg-[var(--violet)] opacity-25 blur-[110px] [animation-delay:-6s]"
+        className="animate-blob pointer-events-none absolute -top-24 -left-24 size-[20rem] rounded-full bg-[var(--cyan)] opacity-20 blur-[100px] sm:size-[28rem]"
+        style={{ translate: `0 ${y * 0.6}px` }}
         aria-hidden
       />
-      <div className="relative mx-auto max-w-6xl px-5">
-        <p className="glass inline-flex items-center gap-2 rounded-full px-3 py-1 font-mono text-xs text-muted-foreground">
+      <div
+        className="animate-blob pointer-events-none absolute -right-32 top-24 size-[22rem] rounded-full bg-[var(--violet)] opacity-25 blur-[110px] [animation-delay:-6s] sm:size-[32rem]"
+        style={{ translate: `0 ${y * -0.35}px` }}
+        aria-hidden
+      />
+      <div
+        className="relative mx-auto max-w-6xl px-5"
+        style={{ transform: `translate3d(0, ${y * 0.12}px, 0)` }}
+      >
+        <p className="glass inline-flex items-center gap-2 rounded-full px-3 py-1 font-mono text-[11px] text-muted-foreground sm:text-xs">
           <span className="size-2 rounded-full bg-primary shadow-[var(--shadow-glow)]" />
           available for freelance work
         </p>
-        <h1 className="mt-6 text-4xl leading-[1.05] font-bold tracking-tight sm:text-6xl lg:text-7xl">
-          Hi, I&apos;m <span className="text-gradient">Mahboob Ali</span>
+        <h1 className="reveal-words mt-6 text-[2.1rem] leading-[1.08] font-bold tracking-tight sm:text-6xl lg:text-7xl">
+          <Words text="Hi, I'm" />{" "}
+          <span className="text-gradient">
+            <Words text="Mahboob Ali" />
+          </span>
         </h1>
-        <p className="mt-4 text-xl font-medium sm:text-3xl">
+        <p className="mt-4 text-lg font-medium sm:text-3xl">
           <Typewriter />
         </p>
         <p className="mt-6 max-w-2xl text-base text-muted-foreground sm:text-lg">
           I build clean, functional websites and web apps — from AI tools to business sites — with
           React, Python, and a sharp eye for design.
         </p>
-        <div className="mt-9 flex flex-wrap items-center gap-4">
+        <div className="mt-9 flex flex-wrap items-center gap-3 sm:gap-4">
           <a
             href="#projects"
-            className="bg-brand rounded-full px-6 py-3 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-[var(--shadow-glow)]"
+            className="bg-brand rounded-full px-6 py-3.5 text-sm font-semibold text-primary-foreground transition-all duration-300 hover:scale-105 hover:shadow-[var(--shadow-glow)] sm:py-3"
           >
             View My Work
           </a>
           <a
             href="#contact"
-            className="rounded-full border border-border px-6 py-3 text-sm font-semibold transition-all duration-300 hover:scale-105 hover:border-primary/60 hover:shadow-[var(--shadow-glow)]"
+            className="rounded-full border border-border px-6 py-3.5 text-sm font-semibold transition-all duration-300 hover:scale-105 hover:border-primary/60 hover:shadow-[var(--shadow-glow)] sm:py-3"
           >
             Let&apos;s Talk
           </a>
-          <div className="ml-auto sm:ml-2">
+          <div className="mt-2 w-full sm:mt-0 sm:ml-2 sm:w-auto">
             <Socials />
           </div>
         </div>
@@ -265,11 +285,26 @@ function Hero() {
   );
 }
 
+function Words({ text }: { text: string }) {
+  return (
+    <>
+      {text.split(" ").map((w, i) => (
+        <span key={`${w}-${i}`} className="word" style={{ "--i": i } as CSSProperties}>
+          {w}
+          {i < text.split(" ").length - 1 ? "\u00A0" : ""}
+        </span>
+      ))}
+    </>
+  );
+}
+
 function SectionTitle({ kicker, title }: { kicker: string; title: string }) {
   return (
-    <div className="reveal">
+    <div className="reveal reveal-words">
       <p className="font-mono text-xs tracking-widest text-primary uppercase">{kicker}</p>
-      <h2 className="mt-3 text-3xl font-bold tracking-tight sm:text-4xl">{title}</h2>
+      <h2 className="mt-3 text-2xl font-bold tracking-tight sm:text-4xl">
+        <Words text={title} />
+      </h2>
     </div>
   );
 }
@@ -281,7 +316,7 @@ function About() {
     { icon: Sparkles, value: "React & Python", label: "Core Stack" },
   ];
   return (
-    <section id="about" className="mx-auto max-w-6xl px-5 py-24">
+    <section id="about" className="mx-auto max-w-6xl px-5 py-16 sm:py-24">
       <SectionTitle kicker="about" title="Builder first, everything else second." />
       <div className="mt-8 grid gap-10 lg:grid-cols-[1.3fr_1fr]">
         <div className="reveal space-y-5 text-muted-foreground [transition-delay:80ms]">
@@ -319,7 +354,7 @@ function About() {
 
 function Skills() {
   return (
-    <section id="skills" className="mx-auto max-w-6xl px-5 py-24">
+    <section id="skills" className="mx-auto max-w-6xl px-5 py-16 sm:py-24">
       <SectionTitle kicker="stack" title="Tools I reach for daily." />
       <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
         {SKILLS.map((s, idx) => (
@@ -342,7 +377,7 @@ function Skills() {
 
 function Projects() {
   return (
-    <section id="projects" className="mx-auto max-w-6xl px-5 py-24">
+    <section id="projects" className="mx-auto max-w-6xl px-5 py-16 sm:py-24">
       <SectionTitle kicker="selected work" title="Things I've built and shipped." />
       <div className="mt-10 grid gap-8 lg:grid-cols-2">
         {PROJECTS.map((p, idx) => (
@@ -434,17 +469,41 @@ function GithubCta() {
 }
 
 function Contact() {
-  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const [sending, setSending] = useState(false);
+
+  const onSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast.success("Thanks! Message noted — WhatsApp gets the fastest reply.");
-    e.currentTarget.reset();
+    const form = e.currentTarget;
+    const data = new FormData(form);
+    data.append("access_key", WEB3FORMS_ACCESS_KEY);
+    data.append("subject", "New message from your portfolio site");
+    data.append("from_name", "mahboob.dev portfolio");
+
+    setSending(true);
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: data,
+      });
+      const json = (await res.json()) as { success?: boolean; message?: string };
+      if (json.success) {
+        toast.success("Message sent! I'll get back to you shortly.");
+        form.reset();
+      } else {
+        toast.error(json.message || "Couldn't send that — try WhatsApp instead.");
+      }
+    } catch {
+      toast.error("Network error — please try WhatsApp instead.");
+    } finally {
+      setSending(false);
+    }
   };
 
   const field =
-    "w-full rounded-xl border border-input bg-secondary/40 px-4 py-3 text-sm outline-none transition-all duration-200 placeholder:text-muted-foreground focus:border-primary/70 focus:shadow-[var(--shadow-glow)]";
+    "w-full rounded-xl border border-input bg-secondary/40 px-4 py-3 text-base outline-none transition-all duration-200 placeholder:text-muted-foreground focus:border-primary/70 focus:shadow-[var(--shadow-glow)] sm:text-sm";
 
   return (
-    <section id="contact" className="mx-auto max-w-6xl px-5 py-24">
+    <section id="contact" className="mx-auto max-w-6xl px-5 py-16 sm:py-24">
       <SectionTitle kicker="contact" title="Let's build something together" />
       <div className="mt-10 grid gap-8 lg:grid-cols-2">
         <div className="reveal space-y-6">
@@ -481,15 +540,41 @@ function Contact() {
             </a>
           </div>
         </div>
-        <form onSubmit={onSubmit} className="reveal glass space-y-4 rounded-3xl p-6 [transition-delay:120ms]">
-          <input required name="name" placeholder="Your name" className={field} />
-          <input required name="contact" placeholder="Email or phone" className={field} />
-          <textarea required name="message" rows={5} placeholder="What are we building?" className={field} />
+        <form
+          onSubmit={onSubmit}
+          className="reveal glass space-y-4 rounded-3xl p-5 [transition-delay:120ms] sm:p-6"
+        >
+          <input
+            type="text"
+            name="botcheck"
+            tabIndex={-1}
+            autoComplete="off"
+            className="hidden"
+            aria-hidden="true"
+          />
+          <input required name="name" maxLength={100} placeholder="Your name" className={field} />
+          <input
+            required
+            name="contact"
+            maxLength={150}
+            placeholder="Email or phone"
+            className={field}
+          />
+          <textarea
+            required
+            name="message"
+            rows={5}
+            maxLength={2000}
+            placeholder="What are we building?"
+            className={field}
+          />
           <button
             type="submit"
-            className="w-full rounded-xl border border-border py-3 text-sm font-semibold transition-all duration-300 hover:border-primary/70 hover:shadow-[var(--shadow-glow)]"
+            disabled={sending}
+            className="inline-flex w-full items-center justify-center gap-2 rounded-xl border border-border py-3.5 text-sm font-semibold transition-all duration-300 hover:scale-[1.02] hover:border-primary/70 hover:shadow-[var(--shadow-glow)] disabled:pointer-events-none disabled:opacity-60"
           >
-            Send message
+            {sending && <Loader2 size={16} className="animate-spin" />}
+            {sending ? "Sending…" : "Send message"}
           </button>
         </form>
       </div>
@@ -525,6 +610,7 @@ function Footer() {
 
 function Index() {
   useReveal();
+  useCursorGlow();
   return (
     <div className="min-h-screen">
       <Navbar />
