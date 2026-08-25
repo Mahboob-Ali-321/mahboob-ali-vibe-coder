@@ -10,10 +10,11 @@ import {
   Sparkles,
   Menu,
   X,
+  Loader2,
 } from "lucide-react";
 import { toast } from "sonner";
 import { Toaster } from "@/components/ui/sonner";
-import { useReveal, WORDS } from "@/hooks/use-reveal";
+import { useReveal, useParallax, useCursorGlow, WORDS } from "@/hooks/use-reveal";
 import modelpulseImg from "@/assets/modelpulse.jpg";
 import smartlookImg from "@/assets/smartlook.jpg";
 
