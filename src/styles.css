@@ -9,8 +9,8 @@
   --radius-xl: calc(var(--radius) + 4px);
   --radius-2xl: calc(var(--radius) + 8px);
   --radius-3xl: calc(var(--radius) + 12px);
-  --font-display: "Space Grotesk", "Space Grotesk Fallback", ui-sans-serif, system-ui, sans-serif;
-  --font-sans: "Space Grotesk", "Space Grotesk Fallback", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -124,16 +124,6 @@
   }
 }
 
-/* metric-matched fallback so text doesn't reflow when Space Grotesk loads */
-@font-face {
-  font-family: "Space Grotesk Fallback";
-  src: local("Arial");
-  size-adjust: 97%;
-  ascent-override: 96%;
-  descent-override: 24%;
-  line-gap-override: 0%;
-}
-
 /* word-by-word headline reveal */
 .reveal-words .word {
   display: inline-block;
@@ -148,31 +138,6 @@
 .reveal-words.is-visible .word {
   opacity: 1;
   transform: none;
-}
-
-/* hero headline: fade in place on first paint, no IO wait, no layout shift */
-.hero-words .word {
-  opacity: 0;
-  transform: none;
-  transition: none;
-  animation: word-fade 0.45s cubic-bezier(0.22, 1, 0.36, 1) forwards;
-  animation-delay: calc(var(--i) * 55ms);
-}
-
-@keyframes word-fade {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-words .word {
-    opacity: 1 !important;
-    animation: none !important;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
