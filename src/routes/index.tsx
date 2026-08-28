@@ -484,7 +484,7 @@ function Projects() {
                   View Live <ArrowUpRight size={16} />
                 </a>
                 <a
-                  href={GITHUB}
+                  href={p.code}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-1.5 rounded-full border border-border px-5 py-2.5 text-sm font-medium text-muted-foreground transition-all duration-200 hover:text-foreground hover:border-primary/60"
