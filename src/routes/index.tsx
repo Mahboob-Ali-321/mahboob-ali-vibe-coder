@@ -17,6 +17,10 @@ import { Toaster } from "@/components/ui/sonner";
 import { useReveal, useParallax, useCursorGlow, WORDS } from "@/hooks/use-reveal";
 import modelpulseImg from "@/assets/modelpulse.jpg";
 import smartlookImg from "@/assets/smartlook.jpg";
+import bellastudioImg from "@/assets/bellastudio.jpg";
+import decodreamsImg from "@/assets/decodreams.jpg";
+import houseofkevalImg from "@/assets/houseofkeval.jpg";
+import jsmasteryImg from "@/assets/jsmastery.jpg";
 import resumeAsset from "@/assets/Mahboob_Ali_Resume.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
