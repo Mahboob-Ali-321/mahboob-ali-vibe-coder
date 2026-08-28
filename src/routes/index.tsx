@@ -17,6 +17,10 @@ import { Toaster } from "@/components/ui/sonner";
 import { useReveal, useParallax, useCursorGlow, WORDS } from "@/hooks/use-reveal";
 import modelpulseImg from "@/assets/modelpulse.jpg";
 import smartlookImg from "@/assets/smartlook.jpg";
+import bellastudioImg from "@/assets/bellastudio.jpg";
+import decodreamsImg from "@/assets/decodreams.jpg";
+import houseofkevalImg from "@/assets/houseofkeval.jpg";
+import jsmasteryImg from "@/assets/jsmastery.jpg";
 import resumeAsset from "@/assets/Mahboob_Ali_Resume.pdf.asset.json";
 
 export const Route = createFileRoute("/")({
@@ -93,6 +97,7 @@ const PROJECTS = [
     link: "https://mahboobali.dpdns.org/",
     image: modelpulseImg,
     stack: ["React", "Data Viz", "Tailwind"],
+    code: GITHUB,
   },
   {
     title: "Smart Look Beauty Salon & Academy",
@@ -102,6 +107,47 @@ const PROJECTS = [
     link: "https://smart-look-bridal-studio.vercel.app/",
     image: smartlookImg,
     stack: ["React", "Responsive", "Booking"],
+    code: GITHUB,
+  },
+  {
+    title: "Bella Studio",
+    tag: "Client Website",
+    description:
+      "A premium unisex salon and beauty lounge website — showcasing services, ambience, and booking for a real salon client.",
+    link: "https://bella-studio-demo-by-mahboob.vercel.app/",
+    image: bellastudioImg,
+    stack: ["React", "Responsive", "Booking"],
+    code: "#",
+  },
+  {
+    title: "Decodreams",
+    tag: "Client Website",
+    description:
+      "An interior design and architecture studio website for a real client in Indore — turnkey interiors, project portfolio, and enquiry form, rated 4.9 on Google with 131 reviews.",
+    link: "https://decodreamscom-by-mahboob.vercel.app/",
+    image: decodreamsImg,
+    stack: ["React", "Responsive", "Portfolio"],
+    code: "#",
+  },
+  {
+    title: "House Of Keval",
+    tag: "Client Website",
+    description:
+      "A premium unisex salon website built for a client in Indore — services, gallery, and booking flow.",
+    link: "https://business-clints.vercel.app/",
+    image: houseofkevalImg,
+    stack: ["React", "Responsive", "Booking"],
+    code: "#",
+  },
+  {
+    title: "JS Mastery Store",
+    tag: "E-commerce",
+    description:
+      "A full e-commerce store front with product listings, cart, and checkout flow.",
+    link: "https://mehboob-e-commerce.vercel.app/",
+    image: jsmasteryImg,
+    stack: ["React", "E-commerce", "Responsive"],
+    code: "#",
   },
 ];
 
@@ -438,7 +484,7 @@ function Projects() {
                   View Live <ArrowUpRight size={16} />
                 </a>
                 <a
-                  href={GITHUB}
+                  href={p.code}
                   target="_blank"
                   rel="noreferrer"
                   className="inline-flex items-center gap-1.5 rounded-full border border-border px-5 py-2.5 text-sm font-medium text-muted-foreground transition-all duration-200 hover:text-foreground hover:border-primary/60"
